@@ -3,13 +3,6 @@ import { motion } from 'framer-motion';
 import heroVideo from '../assets/video/Background.mp4';
 
 const Hero: React.FC = () => {
-  const scrollToNext = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
-  };
-
   return (
     <section className="min-h-screen relative flex items-center justify-center bg-[#FFF5E1] p-4 md:p-8 overflow-hidden pt-24 pb-20">
 
@@ -135,20 +128,6 @@ const Hero: React.FC = () => {
         </div>
 
       </motion.div>
-
-      {/* Floating Scroll Down Button outside the card */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        onClick={scrollToNext}
-        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#B64A31] flex items-center justify-center text-white shadow-[0_5px_15px_rgba(182,74,49,0.4)] hover:bg-[#8E3A26] transition-all duration-300 z-50 cursor-pointer"
-        aria-label="Sound Toggle"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5 10v4a2 2 0 002 2h2l4 4V4L9 8H7a2 2 0 00-2 2z" />
-        </svg>
-      </motion.button>
 
     </section>
   );

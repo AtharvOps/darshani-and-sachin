@@ -20,20 +20,28 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ isOpen, onOpen }) => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
-  const handleFinish = () => {
+  const handleFinish = (isUserAction: boolean = false) => {
     if (isExiting) return;
     setIsExiting(true);
-    
+
+    if (isUserAction) {
+      // Synchronously unlock audio on user interaction to bypass autoplay restrictions
+      const audio = document.getElementById('bg-music') as HTMLAudioElement;
+      if (audio) {
+        audio.play().catch(() => { });
+      }
+    }
+
     // Smooth transition to main site after fade out
     setTimeout(() => {
       onOpen();
-    }, 1200); 
+    }, 1200);
   };
 
   return (
@@ -53,7 +61,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ isOpen, onOpen }) => {
             autoPlay
             muted
             playsInline
-            onEnded={handleFinish}
+            onEnded={() => handleFinish(false)}
             className="absolute inset-0 w-[100vw] h-[100vh] object-cover pointer-events-none"
           />
 
@@ -65,12 +73,12 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ isOpen, onOpen }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 1 }}
-            onClick={handleFinish}
+            onClick={() => handleFinish(true)}
             className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-50 px-6 py-2 border border-white/40 hover:border-[#D4AF37] text-white/80 hover:text-[#D4AF37] tracking-[0.2em] uppercase text-xs md:text-sm font-body rounded-full backdrop-blur-md transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
           >
             Skip Intro
           </motion.button>
-          
+
         </motion.div>
       )}
     </AnimatePresence>

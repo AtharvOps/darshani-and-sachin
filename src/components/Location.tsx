@@ -58,7 +58,7 @@ const Location: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="bg-[#FAF6EC] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-theme-accent/10"
+          className="bg-paper-texture rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-theme-accent/30"
         >
           {/* Venue Image with Cinematic Overlay */}
           <div className="w-full h-72 md:h-[500px] relative overflow-hidden">

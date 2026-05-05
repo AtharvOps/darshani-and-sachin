@@ -36,7 +36,7 @@ const Details: React.FC = () => {
             whileHover={{ y: -10, scale: 1.02 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="bg-white rounded-xl p-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] border-2 border-transparent hover:border-wedding-gold/50 flex flex-col items-center group relative overflow-hidden hover:shadow-[0_0_25px_rgba(212,175,55,0.3)] transition-all duration-500"
+            className="bg-paper-texture rounded-xl p-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] border-2 border-transparent hover:border-wedding-gold/50 flex flex-col items-center group relative overflow-hidden hover:shadow-[0_0_25px_rgba(139,107,46,0.3)] transition-all duration-500"
           >
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-wedding-gold/20 via-wedding-gold to-wedding-gold/20"></div>
             <div className="w-20 h-20 rounded-full bg-wedding-cream border border-wedding-gold/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-wedding-red transition-all duration-500 shadow-inner">
@@ -44,7 +44,7 @@ const Details: React.FC = () => {
             </div>
             <h3 className="font-heading text-3xl text-wedding-dark mb-4">दिनांक</h3>
             <p className="text-xl text-wedding-red font-semibold mb-1">रविवार, १० मे २०२६</p>
-            <p className="text-sm text-gray-500 mt-2 tracking-wider uppercase">वैशाख कृ. १० शके १९४८</p>
+            <p className="text-sm text-wedding-gold mt-2 tracking-wider uppercase">वैशाख कृ. १० शके १९४८</p>
           </motion.div>
 
           {/* Time Card */}
@@ -54,7 +54,7 @@ const Details: React.FC = () => {
             whileHover={{ y: -10, scale: 1.02 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-white rounded-xl p-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] border-2 border-transparent hover:border-wedding-gold/50 flex flex-col items-center group relative overflow-hidden hover:shadow-[0_0_25px_rgba(212,175,55,0.3)] transition-all duration-500"
+            className="bg-paper-texture rounded-xl p-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] border-2 border-transparent hover:border-wedding-gold/50 flex flex-col items-center group relative overflow-hidden hover:shadow-[0_0_25px_rgba(139,107,46,0.3)] transition-all duration-500"
           >
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-wedding-gold/20 via-wedding-gold to-wedding-gold/20"></div>
             <div className="w-20 h-20 rounded-full bg-wedding-cream border border-wedding-gold/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-wedding-red transition-all duration-500 shadow-inner">
@@ -62,7 +62,7 @@ const Details: React.FC = () => {
             </div>
             <h3 className="font-heading text-3xl text-wedding-dark mb-4">मुहूर्त</h3>
             <p className="text-xl text-wedding-red font-semibold mb-1">१२:२९ दु.</p>
-            <p className="text-sm text-gray-500 mt-2 tracking-wider uppercase">शुभ मुहूर्त</p>
+            <p className="text-sm text-wedding-gold mt-2 tracking-wider uppercase">शुभ मुहूर्त</p>
           </motion.div>
 
           {/* Venue Card */}
@@ -72,7 +72,7 @@ const Details: React.FC = () => {
             whileHover={{ y: -10, scale: 1.02 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
-            className="bg-white rounded-xl p-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] border-2 border-transparent hover:border-wedding-gold/50 flex flex-col items-center group relative overflow-hidden hover:shadow-[0_0_25px_rgba(212,175,55,0.3)] transition-all duration-500"
+            className="bg-paper-texture rounded-xl p-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] border-2 border-transparent hover:border-wedding-gold/50 flex flex-col items-center group relative overflow-hidden hover:shadow-[0_0_25px_rgba(139,107,46,0.3)] transition-all duration-500"
           >
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-wedding-gold/20 via-wedding-gold to-wedding-gold/20"></div>
             <div className="w-20 h-20 rounded-full bg-wedding-cream border border-wedding-gold/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-wedding-red transition-all duration-500 shadow-inner">
@@ -80,7 +80,7 @@ const Details: React.FC = () => {
             </div>
             <h3 className="font-heading text-3xl text-wedding-dark mb-4">स्थळ</h3>
             <p className="text-xl text-wedding-red font-semibold mb-1">बाळकृष्ण मल्टीपर्पज हॉल</p>
-            <p className="text-sm text-gray-500 mt-2 tracking-wider uppercase">किर्लोस्करवाडी, रामानंदनगर</p>
+            <p className="text-sm text-wedding-gold mt-2 tracking-wider uppercase">किर्लोस्करवाडी, रामानंदनगर</p>
           </motion.div>
         </div>
       </div>
