@@ -1,73 +1,154 @@
-# React + TypeScript + Vite
+# 💍 Darshani & Sachin – Wedding Invitation Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, interactive wedding invitation website built using modern web technologies.  
+This project creates a cinematic and elegant digital wedding experience with animations, music, and traditional Marathi design elements.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Live Demo
+👉 https://darshani-and-sachin.onrender.com *(update if needed)*
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🎬 Intro animation (envelope / wax seal style)
+- 🎥 Hero section with video background
+- 🎵 Background music with smooth autoplay handling
+- 🌸 Falling petals animation (romantic effect)
+- 💌 Traditional Marathi wedding card layout
+- 🧾 Two-column family section (fixed layout even on mobile)
+- 🟥 Vertical "जाहीर निमंत्रक" strip (authentic card feel)
+- 📍 Venue section with Google Maps
+- 📱 Responsive design
+- ⚡ Smooth animations using Framer Motion
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- ⚛️ React (Vite)
+- 🎨 Tailwind CSS
+- 🎞️ Framer Motion
+- 🟦 TypeScript
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+<pre>
+darshani-and-sachin/
+├── public/
+│
+├── src/
+│   ├── components/
+│   │   ├── Hero.tsx
+│   │   ├── WelcomeScreen.tsx
+│   │   ├── MusicPlayer.tsx
+│   │   ├── Gallery.tsx
+│   │   ├── Location.tsx
+│   │   ├── Petals.tsx
+│   │   └── FamilySection.tsx
+│   │
+│   ├── assets/
+│   │   ├── video/
+│   │   │   ├── intro.mp4
+│   │   │   └── Background.mp4
+│   │   │
+│   │   ├── images/
+│   │   │   ├── venue/
+│   │   │   └── petals/
+│   │   │
+│   │   └── audio/
+│   │       └── music.mp3
+│   │
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+│
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── tailwind.config.js
+└── README.md
+</pre>
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the repository
+
+git clone https://github.com/AtharvOps/darshani-and-sachin.git
+cd darshani-and-sachin
+
+
+---
+
+### 2️⃣ Install dependencies
+
+npm install
+
+---
+
+### 3️⃣ Run development server
+
+
+npm run dev
+
+
+---
+
+### 4️⃣ Build for production
+
+
+npm run build
+
+
+---
+
+## 🌍 Deployment (Render)
+
+This project is deployed using Render as a static site.
+
+### Settings:
+- Build Command: `npm run build`
+- Publish Directory: `dist`
+
+---
+
+## 🎨 Design Highlights
+
+This project combines:
+- Traditional Marathi wedding invitation aesthetics 🪔  
+- Modern animations and UI design 🎬  
+- Interactive digital experience 💻  
+
+Inspired by real printed wedding cards.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.  
+Feel free to fork the repo and submit a pull request.
+
+---
+
+## 📧 Contact
+
+Instagram: @atharv_patil_909  
+GitHub: https://github.com/AtharvOps  
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
+
+---
+
+## 🪔 Special Note
+
+This project is created by AtharvOps for a real wedding celebration for his brother's wedding.  
+Blending tradition with technology to create a memorable digital invitation experience.
