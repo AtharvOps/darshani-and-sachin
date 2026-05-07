@@ -2,27 +2,60 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Placeholder images from unsplash (premium wedding aesthetic)
-const images = [
-  'https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1610173826620-802522cda5a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-];
+import I1 from '../assets/images/I1.jpeg';
+import I2 from '../assets/images/I2.jpeg';
+import I3 from '../assets/images/I3.jpeg';
+import I4 from '../assets/images/I4.jpeg';
+
+const images = [I1, I2, I3, I4];
+
+// Sub-component for subtle floating particles behind the gallery
+const FloatingParticles = () => {
+  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number; duration: number; size: number }>>([]);
+
+  useEffect(() => {
+    const newParticles = Array.from({ length: 20 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: Math.random() * 10 + 10,
+      size: Math.random() * 4 + 2,
+    }));
+    setParticles(newParticles);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full bg-theme-accent/40"
+          style={{ width: p.size, height: p.size, left: `${p.x}%`, top: `${p.y}%` }}
+          animate={{
+            y: [0, -100, -200],
+            x: [0, Math.random() * 50 - 25, Math.random() * 50 - 25],
+            opacity: [0, 0.6, 0],
+            scale: [0.5, 1.2, 0.5]
+          }}
+          transition={{ duration: p.duration, repeat: Infinity, ease: "linear", delay: p.delay }}
+        />
+      ))}
+    </div>
+  );
+};
 
 const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Auto-play effect
+  // Rotating auto-play effect
   useEffect(() => {
     if (!isAutoPlaying) return;
-
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 4000); // Change slide every 4 seconds
-
+    }, 4000);
     return () => clearInterval(timer);
   }, [isAutoPlaying]);
 
@@ -42,11 +75,13 @@ const Gallery: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-theme-light relative">
+    <section className="py-24 bg-theme-light relative overflow-hidden" id="gallery">
+      <FloatingParticles />
+
       <div className="container mx-auto px-4 max-w-4xl relative z-10">
         
         {/* Mixed Typography Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -90,35 +125,53 @@ const Gallery: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Image Slider */}
-        <div 
-          className="relative w-full max-w-2xl mx-auto"
+        {/* Rotating Slider */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="relative w-full max-w-md md:max-w-xl mx-auto"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
-          <div className="relative aspect-[4/5] md:aspect-square overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[10px] border-theme-light bg-theme-light">
+          {/* Rectangular Shape with Rounded Edges */}
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[10px] border-theme-light bg-theme-light group transition-all duration-500 hover:border-theme-accent/50 hover:box-glow-gold hover:-translate-y-2">
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentIndex}
                 src={images[currentIndex]}
                 alt={`Wedding Gallery ${currentIndex + 1}`}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
+                initial={{ opacity: 0, scale: 1.1, rotate: 2 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.95, rotate: -2 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="w-full h-full object-cover cursor-pointer absolute inset-0"
+                className="w-full h-full object-cover cursor-pointer absolute inset-0 transition-transform duration-700 group-hover:scale-105"
                 onClick={() => setSelectedImage(images[currentIndex])}
               />
             </AnimatePresence>
 
             {/* Click Overlay (View Text) */}
-            <div 
-              className="absolute inset-0 bg-theme-dark/30 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center cursor-pointer pointer-events-none"
-            >
-              <span className="text-theme-light font-script text-4xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-theme-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center cursor-pointer pointer-events-none">
+              <motion.span 
+                initial={{ scale: 0.8 }}
+                whileHover={{ scale: 1 }}
+                className="text-theme-light font-script text-5xl text-glow-gold transform translate-y-8 group-hover:translate-y-0 transition-all duration-500"
+              >
                 View
-              </span>
+              </motion.span>
             </div>
+            
+            {/* Subtle Shimmer Effect on hover */}
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent z-10 pointer-events-none mix-blend-overlay"
+              initial={{ x: '-100%', opacity: 0 }}
+              whileHover={{ 
+                x: '100%', 
+                opacity: [0, 1, 0],
+                transition: { duration: 1.5, ease: "easeInOut" }
+              }}
+            />
           </div>
 
           {/* Navigation Controls */}
@@ -151,7 +204,7 @@ const Gallery: React.FC = () => {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Lightbox */}
@@ -179,7 +232,7 @@ const Gallery: React.FC = () => {
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               src={selectedImage} 
               alt="Enlarged Wedding Memory" 
-              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl border-4 border-theme-accent/30"
+              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-[0_0_40px_rgba(139,107,46,0.4)] border-4 border-theme-accent/40"
               onClick={(e) => e.stopPropagation()}
             />
           </motion.div>
